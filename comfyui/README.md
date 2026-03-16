@@ -205,7 +205,7 @@ export COMFYUI_CLI_PORT=8188
 ## 架构
 
 ```
-cli_anything/comfyui/
+comfyui/
 ├── comfyui_cli.py        # Main CLI (Click-based)
 ├── core/
 │   ├── client.py         # HTTP/WebSocket client

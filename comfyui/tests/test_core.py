@@ -14,7 +14,7 @@ import pytest
 # ============================================================
 # Workflow tests
 # ============================================================
-from cli_anything.comfyui.core.workflow import Workflow
+from comfyui.core.workflow import Workflow
 
 
 class TestWorkflow:
@@ -223,7 +223,7 @@ class TestWorkflow:
 # ============================================================
 # Client tests (mocked)
 # ============================================================
-from cli_anything.comfyui.core.client import (
+from comfyui.core.client import (
     ComfyUIAPIError,
     ComfyUIClient,
     ComfyUIConnectionError,
@@ -359,7 +359,7 @@ import urllib.error
 # ============================================================
 # Generate tests
 # ============================================================
-from cli_anything.comfyui.core.generate import (
+from comfyui.core.generate import (
     build_img2img_workflow,
     build_txt2img_workflow,
 )
@@ -449,7 +449,7 @@ class TestGenerate:
 # ============================================================
 # Generate LoRA/Upscale tests
 # ============================================================
-from cli_anything.comfyui.core.generate import (
+from comfyui.core.generate import (
     build_txt2img_lora_workflow,
     build_upscale_workflow,
 )
@@ -593,7 +593,7 @@ class TestClientNewMethods:
 class TestCLINewCommands:
     """Tests for newly added CLI commands."""
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_folder_paths")
+    @patch("comfyui.core.client.ComfyUIClient.get_folder_paths")
     def test_system_paths_json(self, mock_paths):
         mock_paths.return_value = {
             "checkpoints": ["/models/checkpoints"],
@@ -605,7 +605,7 @@ class TestCLINewCommands:
         data = json.loads(result.output)
         assert "checkpoints" in data
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_logs")
+    @patch("comfyui.core.client.ComfyUIClient.get_logs")
     def test_system_logs(self, mock_logs):
         mock_logs.return_value = "line 1\nline 2\n"
         runner = CliRunner()
@@ -613,7 +613,7 @@ class TestCLINewCommands:
         assert result.exit_code == 0
         assert "line 1" in result.output
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.list_files")
+    @patch("comfyui.core.client.ComfyUIClient.list_files")
     def test_images_list(self, mock_files):
         mock_files.return_value = ["img1.png", "img2.png", "img3.png"]
         runner = CliRunner()
@@ -621,7 +621,7 @@ class TestCLINewCommands:
         assert result.exit_code == 0
         assert "3 files" in result.output
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.list_files")
+    @patch("comfyui.core.client.ComfyUIClient.list_files")
     def test_images_list_json(self, mock_files):
         mock_files.return_value = ["img1.png", "img2.png"]
         runner = CliRunner()
@@ -630,7 +630,7 @@ class TestCLINewCommands:
         data = json.loads(result.output)
         assert data["count"] == 2
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_node_info")
+    @patch("comfyui.core.client.ComfyUIClient.get_node_info")
     def test_nodes_samplers(self, mock_info):
         mock_info.return_value = {
             "KSampler": {
@@ -656,7 +656,7 @@ class TestCLINewCommands:
         assert "euler" in result.output
         assert "karras" in result.output
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_node_info")
+    @patch("comfyui.core.client.ComfyUIClient.get_node_info")
     def test_nodes_categories(self, mock_info):
         mock_info.return_value = {
             "KSampler": {"category": "sampling"},
@@ -669,8 +669,8 @@ class TestCLINewCommands:
         assert "sampling" in result.output
         assert "image" in result.output
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_history")
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.view_image")
+    @patch("comfyui.core.client.ComfyUIClient.get_history")
+    @patch("comfyui.core.client.ComfyUIClient.view_image")
     def test_history_save_images(self, mock_view, mock_hist):
         mock_hist.return_value = {
             "abc-123": {
@@ -698,7 +698,7 @@ class TestCLINewCommands:
 # ============================================================
 # Formatter tests
 # ============================================================
-from cli_anything.comfyui.utils.formatters import (
+from comfyui.utils.formatters import (
     OutputFormatter,
     format_json,
     format_kv,
@@ -766,7 +766,7 @@ class TestFormatters:
 # ============================================================
 # Config tests
 # ============================================================
-from cli_anything.comfyui.utils.config import (
+from comfyui.utils.config import (
     DEFAULT_CONFIG,
     get_server_args,
     load_config,
@@ -784,7 +784,7 @@ class TestConfig:
     def test_load_config_defaults(self):
         # Should fall back to defaults when no config file
         with patch(
-            "cli_anything.comfyui.utils.config.get_config_path",
+            "comfyui.utils.config.get_config_path",
             return_value=Path("/nonexistent/.comfyui-cli.json"),
         ):
             config = load_config()
@@ -804,7 +804,7 @@ class TestConfig:
 # ============================================================
 from click.testing import CliRunner
 
-from cli_anything.comfyui.comfyui_cli import cli
+from comfyui.comfyui_cli import cli
 
 
 class TestCLI:
@@ -892,7 +892,7 @@ class TestCLI:
         finally:
             os.unlink(path)
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.get_system_stats")
+    @patch("comfyui.core.client.ComfyUIClient.get_system_stats")
     def test_system_stats_json(self, mock_stats):
         mock_stats.return_value = {
             "system": {"os": "nt", "ram_total": 16_000_000_000, "ram_free": 8_000_000_000},
@@ -904,7 +904,7 @@ class TestCLI:
         data = json.loads(result.output)
         assert "system" in data
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.is_server_running")
+    @patch("comfyui.core.client.ComfyUIClient.is_server_running")
     def test_system_ping_alive(self, mock_ping):
         mock_ping.return_value = True
         runner = CliRunner()
@@ -912,7 +912,7 @@ class TestCLI:
         assert result.exit_code == 0
         assert "ALIVE" in result.output
 
-    @patch("cli_anything.comfyui.core.client.ComfyUIClient.is_server_running")
+    @patch("comfyui.core.client.ComfyUIClient.is_server_running")
     def test_system_ping_dead(self, mock_ping):
         mock_ping.return_value = False
         runner = CliRunner()
@@ -931,7 +931,7 @@ class TestCLI:
 # ============================================================
 # Diverse generation tests
 # ============================================================
-from cli_anything.comfyui.core.diverse import (
+from comfyui.core.diverse import (
     apply_diversity_to_workflow,
     generate_lora_weight_sweep,
     generate_random_character_prompt,
@@ -1048,9 +1048,9 @@ class TestCLISubprocess:
         """Resolve CLI executable path.
 
         In test mode, returns the executable name (assumes it's in PATH).
-        Set CLI_ANYTHING_FORCE_INSTALLED=1 to skip existence check.
+        Set COMFYUI_CLI_FORCE_INSTALLED=1 to skip existence check.
         """
-        if os.environ.get("CLI_ANYTHING_FORCE_INSTALLED"):
+        if os.environ.get("COMFYUI_CLI_FORCE_INSTALLED"):
             return name
         path = shutil.which(name)
         if path:

@@ -15,28 +15,28 @@ from pathlib import Path
 
 import click
 
-from cli_anything.comfyui.core.client import (
+from comfyui.core.client import (
     ComfyUIAPIError,
     ComfyUIClient,
     ComfyUIConnectionError,
     ComfyUITimeoutError,
 )
-from cli_anything.comfyui.core.generate import (
+from comfyui.core.generate import (
     build_img2img_workflow,
     build_txt2img_lora_workflow,
     build_txt2img_workflow,
     build_upscale_workflow,
 )
-from cli_anything.comfyui.core.diverse import (
+from comfyui.core.diverse import (
     apply_diversity_to_workflow,
     generate_lora_weight_sweep,
     generate_random_character_prompt,
     get_style_info,
     get_style_list,
 )
-from cli_anything.comfyui.core.workflow import Workflow
-from cli_anything.comfyui.utils.config import get_server_args, load_config, save_config
-from cli_anything.comfyui.utils.formatters import (
+from comfyui.core.workflow import Workflow
+from comfyui.utils.config import get_server_args, load_config, save_config
+from comfyui.utils.formatters import (
     OutputFormatter,
     format_kv,
     format_list,
@@ -1667,7 +1667,7 @@ def config_set(ctx, key, value):
 @click.pass_context
 def config_reset(ctx):
     """Reset configuration to defaults."""
-    from cli_anything.comfyui.utils.config import DEFAULT_CONFIG
+    from comfyui.utils.config import DEFAULT_CONFIG
     fmt = _get_fmt(ctx)
     save_config(dict(DEFAULT_CONFIG))
     fmt.print(DEFAULT_CONFIG, human_text="Configuration reset to defaults.")

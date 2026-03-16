@@ -13,10 +13,10 @@ import pytest
 
 from click.testing import CliRunner
 
-from cli_anything.comfyui.core.client import ComfyUIClient
-from cli_anything.comfyui.core.generate import build_txt2img_workflow
-from cli_anything.comfyui.core.workflow import Workflow
-from cli_anything.comfyui.comfyui_cli import cli
+from comfyui.core.client import ComfyUIClient
+from comfyui.core.generate import build_txt2img_workflow
+from comfyui.core.workflow import Workflow
+from comfyui.comfyui_cli import cli
 
 
 def _get_server():
