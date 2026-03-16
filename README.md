@@ -12,16 +12,24 @@
 
 ## 安装
 
+### 从 PyPI 安装
+
 ```bash
-git clone https://github.com/XXXxx7258/comfyui-cli.git
-cd comfyui-cli
-python -m pip install -e .
+pip install comfyui-cli
 ```
 
 安装完成后，可通过以下命令检查是否可用：
 
 ```bash
 comfyui-cli --version
+```
+
+### 从源码安装（可选）
+
+如果你已经拿到源码，可以在源码目录执行：
+
+```bash
+python -m pip install -e .
 ```
 
 ## 前置条件
@@ -92,6 +100,7 @@ comfyui-cli generate txt2img --prompt "a cat" --checkpoint "model.safetensors"
 .
 ├── README.md
 ├── COMFYUI.md
+├── LICENSE
 ├── setup.py
 └── comfyui/
     ├── comfyui_cli.py
@@ -119,3 +128,7 @@ pytest comfyui/tests/test_full_e2e.py -v
 ## 相关文档
 
 - `COMFYUI.md`：ComfyUI API 与命令映射说明
+
+## License
+
+MIT
