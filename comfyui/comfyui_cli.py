@@ -87,7 +87,7 @@ def _safe_echo(text: str) -> None:
 @click.option("--port", default=None, type=int, help="ComfyUI server port")
 @click.option("--ssl", is_flag=True, default=False, help="Use HTTPS/WSS")
 @click.option("--json", "json_mode", is_flag=True, default=False, help="Output JSON")
-@click.version_option(version="0.1.0", prog_name="comfyui-cli")
+@click.version_option(version="0.1.1", prog_name="comfyui-cli")
 @click.pass_context
 def cli(ctx, host, port, ssl, json_mode):
     """comfyui-cli - Command-line interface for ComfyUI."""

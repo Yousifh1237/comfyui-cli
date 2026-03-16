@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "comfyui-cli"
+version = "0.1.1"
+description = "Command-line interface for an already running ComfyUI server"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+  { name = "comfyui-cli" },
+]
+keywords = ["comfyui", "cli", "workflow", "api-client"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Environment :: Console",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Graphics",
+  "Topic :: Software Development :: Libraries",
+]
+dependencies = [
+  "click>=8.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "build>=1.4.0",
+  "twine>=6.2.0",
+  "pytest>=9.0.0",
+  "ruff>=0.6.0",
+]
+
+[project.scripts]
+comfyui-cli = "comfyui.comfyui_cli:main"
+
+[tool.setuptools.packages.find]
+include = ["comfyui", "comfyui.*"]

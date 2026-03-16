@@ -2,6 +2,8 @@
 
 `comfyui-cli` 是一个面向 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 的命令行工具，用来通过终端完成工作流执行、模型查询、队列管理、节点信息查看以及基础生成任务。
 
+它面向**已运行中的 ComfyUI 服务**，适合通过 HTTP/API 在终端里执行工作流、查询模型与节点信息，并进行基础生成任务。
+
 ## 功能概览
 
 - 执行与校验 ComfyUI 工作流
@@ -30,6 +32,12 @@ comfyui-cli --version
 
 ```bash
 python -m pip install -e .
+```
+
+如果你需要开发、测试或重新打包发布，可以安装开发依赖：
+
+```bash
+python -m pip install -r requirements-dev.txt
 ```
 
 ## 前置条件

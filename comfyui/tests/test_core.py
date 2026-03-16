@@ -814,7 +814,7 @@ class TestCLI:
         runner = CliRunner()
         result = runner.invoke(cli, ["--version"])
         assert result.exit_code == 0
-        assert "0.1.0" in result.output
+        assert "0.1.1" in result.output
 
     def test_help(self):
         runner = CliRunner()
@@ -1064,7 +1064,7 @@ class TestCLISubprocess:
             capture_output=True, text=True, timeout=10,
         )
         assert result.returncode == 0
-        assert "0.1.0" in result.stdout
+        assert "0.1.1" in result.stdout
 
     def test_cli_help(self):
         exe = self._resolve_cli("comfyui-cli")
