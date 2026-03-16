@@ -2,8 +2,6 @@
 
 `comfyui-cli` 是一个面向 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 的命令行工具，用来通过终端完成工作流执行、模型查询、队列管理、节点信息查看以及基础生成任务。
 
-该项目当前采用标准单包结构，源码位于仓库根目录下的 `comfyui/`，适合作为独立 GitHub 仓库维护，并为后续发布 Python 包做准备。
-
 ## 功能概览
 
 - 执行与校验 ComfyUI 工作流
@@ -50,6 +48,32 @@ comfyui-cli workflow run my_workflow.json --save-to ./output
 comfyui-cli --json system stats
 ```
 
+## 常用场景
+
+### 校验工作流
+
+```bash
+comfyui-cli workflow validate my_workflow.json
+```
+
+### 查看模型类型
+
+```bash
+comfyui-cli models types
+```
+
+### 查看节点列表
+
+```bash
+comfyui-cli nodes list
+```
+
+### 执行 txt2img
+
+```bash
+comfyui-cli generate txt2img --prompt "a cat" --checkpoint "model.safetensors"
+```
+
 ## 常用命令
 
 ```bash
@@ -78,7 +102,7 @@ comfyui-cli generate txt2img --prompt "a cat" --checkpoint "model.safetensors"
 
 ## 测试
 
-运行核心测试：
+运行核心单元测试：
 
 ```bash
 pytest comfyui/tests/test_core.py -v
@@ -95,12 +119,3 @@ pytest comfyui/tests/test_full_e2e.py -v
 ## 相关文档
 
 - `COMFYUI.md`：ComfyUI API 与命令映射说明
-- `comfyui/README.md`：更完整的 CLI 使用文档
-- `comfyui/tests/TEST.md`：测试计划与测试结果说明
-
-## 当前状态
-
-- GitHub 仓库已独立
-- 对外命令统一为 `comfyui-cli`
-- 当前优先完成仓库整理与公开展示
-- Python 包公开发布可后续再做
